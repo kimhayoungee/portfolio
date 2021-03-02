@@ -24,7 +24,7 @@ public class BoardMapperTest {
 		mapper.getBoardList().forEach(board -> log.info(board));
 	}
 
-//	@Test
+	@Test
 	public void testGetNumber() {
 		log.info(mapper.getNumber());
 	}
@@ -39,14 +39,6 @@ public class BoardMapperTest {
 		bvo.setBcontent("테스트 내용입니다");
 		
 		mapper.register(bvo);
-		log.info(bvo);
-	}
-
-	@Test
-	public void testShowDetail() {
-		
-		BoardVO bvo = mapper.showDetail("1");
-		
 		log.info(bvo);
 	}
 	

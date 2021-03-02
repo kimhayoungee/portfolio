@@ -15,6 +15,6 @@ public interface BoardMapper {
 	
 	public int register(BoardVO board);
 	
-	public BoardVO showDetail(String bno);
+	public List<BoardVO> showDetail(BoardVO board);
 	
 } //end of BoardMapper

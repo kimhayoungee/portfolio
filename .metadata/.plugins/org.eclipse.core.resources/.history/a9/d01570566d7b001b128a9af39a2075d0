@@ -45,8 +45,10 @@ public class BoardMapperTest {
 	@Test
 	public void testShowDetail() {
 		
-		BoardVO bvo = mapper.showDetail("1");
+		BoardVO bvo = new BoardVO();
+		bvo.setBno("1");
 		
+		mapper.showDetail();
 		log.info(bvo);
 	}
 	

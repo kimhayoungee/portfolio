@@ -20,7 +20,7 @@
 		values (#{bno}, #{bid}, #{btitle}, #{bcontent}, #{bfile, jdbcType=VARCHAR}, sysdate, sysdate, 'Y')
 	</insert>
 
-	<select id="showDetail" resultType="com.my.domain.BoardVO">
+	<select id="showDetail" parameterType="com.my.domain.BoardVO" resultType="com.my.domain.BoardVO">
 		select * 
 		from   khy_board
 		where  bno = #{bno}

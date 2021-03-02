@@ -46,7 +46,6 @@ public class BoardMapperTest {
 	public void testShowDetail() {
 		
 		BoardVO bvo = mapper.showDetail("1");
-		
 		log.info(bvo);
 	}
 	
