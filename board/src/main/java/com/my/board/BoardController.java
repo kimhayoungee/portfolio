@@ -13,7 +13,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class BoardController {
 
-	@GetMapping("/goBoardList")
+	@GetMapping("/getBoardList")
 	public void boardlist() {
 		log.info("글목록");
 		

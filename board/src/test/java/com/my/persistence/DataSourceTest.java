@@ -13,12 +13,14 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
+@WebAppConfiguration
 public class DataSourceTest {
 
 	@Autowired
@@ -27,7 +29,7 @@ public class DataSourceTest {
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
 	
-//	@Test 
+	@Test 
 	public void testConnection() {
 		
 		try(Connection con = dataSource.getConnection()){
@@ -40,7 +42,7 @@ public class DataSourceTest {
 	
 	} // end of testConnection()
 	
-	@Test
+//	@Test
 	public void testMyBatis() {
 		
 		try(SqlSession session = sqlSessionFactory.openSession();

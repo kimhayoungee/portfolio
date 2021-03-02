@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.mapper.BoardMapper">
+
+	<select id="getBoardList" resultType="com.my.domain.BoardVO">
+		<![CDATA[
+			select * from khy_board
+		]]>
+	</select>
+
+	<insert id="register">
+		insert into khy_board (bno, bid, btitle, bcontent, bfile, bregdate, bupdatedate, bdeleteyn)
+		values (#{bno}, #{bid}, #{btitle}, #{bcontent}, #{bfile, jdbctype=VARCHAR}, sysdate, sysdate, 'y')
+	</insert>
+
+</mapper>

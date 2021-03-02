@@ -1,0 +1,9 @@
+package com.my.mapper;
+
+public interface BoardMapper {
+
+	@Select("select * from khy_board")
+	public List<BoardVO> getBoardList();
+	
+	
+} //end of BoardMapper
