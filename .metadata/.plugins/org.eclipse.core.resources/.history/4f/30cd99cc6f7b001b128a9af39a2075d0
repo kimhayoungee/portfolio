@@ -54,12 +54,9 @@ public class BoardMapperTest {
 	public void testUpdateBoard() {
 		
 		BoardVO bvo = new BoardVO();
-		bvo.setBno("1");
 		bvo.setBtitle("수정된 제목입니다");
 		bvo.setBcontent("수정된 내용입니다");
 		
-		int count = mapper.updateBoard(bvo);
-		log.info("UPDATE COUNT : " + count);
 	}
 	
 } //end of BoardMapperTest

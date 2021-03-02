@@ -13,10 +13,8 @@ public interface BoardMapper {
 	
 	public String getNumber();
 	
-	public int register(BoardVO bvo);
+	public int register(BoardVO board);
 	
 	public BoardVO showDetail(String bno);
-	
-	public int updateBoard(BoardVO bvo);
 	
 } //end of BoardMapper

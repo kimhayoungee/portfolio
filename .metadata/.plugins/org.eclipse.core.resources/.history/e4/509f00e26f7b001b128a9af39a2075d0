@@ -30,7 +30,7 @@
 		update khy_board
 		set	   btitle     = #{btitle}
 		      ,bcontent   = #{bcontent}
-		      ,bfile      = #{bfile, jdbcType=VARCHAR}
+		      ,bfile      = #{bfile}
 		      ,bupdatedate= sysdate
 		where  bno = #{bno}
 	</update>
