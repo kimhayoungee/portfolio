@@ -50,7 +50,7 @@ public class BoardMapperTest {
 		log.info(bvo);
 	}
 	
-//	@Test
+	@Test
 	public void testUpdateBoard() {
 		
 		BoardVO bvo = new BoardVO();
@@ -58,16 +58,8 @@ public class BoardMapperTest {
 		bvo.setBtitle("수정된 제목입니다");
 		bvo.setBcontent("수정된 내용입니다");
 		
-		int result = mapper.updateBoard(bvo);
-		log.info("UPDATE RESULT : " + result);
-	}
-
-	@Test
-	public void testDeleteBoard() {
-		
-		int result = mapper.deleteBoard("3");
-		
-		log.info("DELETE RESULT : " + result);
+		int count = mapper.updateBoard(bvo);
+		log.info("UPDATE COUNT : " + count);
 	}
 	
 } //end of BoardMapperTest

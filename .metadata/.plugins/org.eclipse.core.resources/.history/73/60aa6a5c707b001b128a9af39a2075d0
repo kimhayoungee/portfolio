@@ -19,6 +19,4 @@ public interface BoardMapper {
 	
 	public int updateBoard(BoardVO bvo);
 	
-	public int deleteBoard(String bno);
-	
 } //end of BoardMapper

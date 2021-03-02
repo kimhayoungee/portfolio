@@ -35,11 +35,4 @@
 		where  bno = #{bno}
 	</update>
 	
-	<update id="deleteBoard">
-		update khy_board
-		set    bdeleteyn   = 'N'
-		      ,bupdatedate = sysdate
-		where  bno = #{bno}
-	</update>
-	
 </mapper>

@@ -65,9 +65,7 @@ public class BoardMapperTest {
 	@Test
 	public void testDeleteBoard() {
 		
-		int result = mapper.deleteBoard("3");
-		
-		log.info("DELETE RESULT : " + result);
+		int 
 	}
 	
 } //end of BoardMapperTest
