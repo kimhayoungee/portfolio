@@ -69,4 +69,10 @@ public class BoardController {
 			
 			return "redirect:/board/getList";
 		}
+		
+		//페이지 이동
+		@GetMapping("/register")
+		public void goRegister() {
+			
+		}
 } // end of BoardController
