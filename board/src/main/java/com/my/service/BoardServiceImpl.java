@@ -22,37 +22,41 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> getBoardList() {
 		// TODO Auto-generated method stub
-		return null;
+		log.info("getBoardList!!");
+		
+		return mapper.selectWholeList();
 	}
 
 	@Override
-	public String getNumber() {
+	public void register(BoardVO bvo) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int register(BoardVO bvo) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("register!!" + bvo);
+		
+		bvo.setBno(mapper.getNumber()); //채번
+		mapper.insertBoard(bvo);
+		
+		log.info("서비스 끝");
 	}
 
 	@Override
 	public BoardVO showDetail(String bno) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		return mapper.selectDetail(bno);
 	}
 
 	@Override
-	public int updateBoard(BoardVO bvo) {
+	public int editBoard(BoardVO bvo) {
 		// TODO Auto-generated method stub
-		return 0;
+
+		return mapper.updateBoard(bvo);
 	}
 
 	@Override
-	public int deleteBoard(String bno) {
+	public int removeBoard(String bno) {
 		// TODO Auto-generated method stub
-		return 0;
+		
+		return mapper.deleteBoard(bno);
 	}
 
 }

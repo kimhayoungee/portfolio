@@ -8,14 +8,12 @@ public interface BoardService {
 
 	public List<BoardVO> getBoardList();
 	
-	public String getNumber(); //채번 
-	
-	public int register(BoardVO bvo);
+	public void register(BoardVO bvo);
 	
 	public BoardVO showDetail(String bno);
 	
-	public int updateBoard(BoardVO bvo);
+	public int editBoard(BoardVO bvo);
 	
-	public int deleteBoard(String bno);
+	public int removeBoard(String bno);
 	
 }

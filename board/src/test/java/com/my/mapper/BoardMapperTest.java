@@ -30,7 +30,7 @@ public class BoardMapperTest {
 	}
 	
 //	@Test 
-	public void testRegister() {
+	public void testinsertBoard() {
 		
 		BoardVO bvo = new BoardVO();
 		bvo.setBno("2");
@@ -69,5 +69,5 @@ public class BoardMapperTest {
 		
 		log.info("DELETE RESULT : " + result);
 	}
-	
+
 } //end of BoardMapperTest

@@ -6,6 +6,7 @@
 	<select id="selectWholeList" resultType="com.my.domain.BoardVO">
 		<![CDATA[
 			select * from khy_board
+			order by bno desc
 		]]>
 	</select>
 
