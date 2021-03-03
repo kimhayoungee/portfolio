@@ -28,7 +28,7 @@ public class BoardController {
 			log.info("컨트롤러 getList");
 			
 			model.addAttribute("boardList", service.getList());
-			return "board/list";
+			return "list";
 		}
 		
 		@PostMapping("/register")
