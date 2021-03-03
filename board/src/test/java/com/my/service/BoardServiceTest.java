@@ -33,7 +33,7 @@ public class BoardServiceTest {
 	
 //	@Test
 	public void testGetBoardList() {
-		service.getBoardList().forEach(board -> log.info(board));
+		service.getList().forEach(board -> log.info(board));
 	}
 
 //	@Test

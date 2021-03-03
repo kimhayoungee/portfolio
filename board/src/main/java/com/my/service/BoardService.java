@@ -6,7 +6,7 @@ import com.my.domain.BoardVO;
 
 public interface BoardService {
 
-	public List<BoardVO> getBoardList();
+	public List<BoardVO> getList();
 	
 	public void register(BoardVO bvo);
 	

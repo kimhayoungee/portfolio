@@ -6,6 +6,7 @@
 	<select id="selectWholeList" resultType="com.my.domain.BoardVO">
 		<![CDATA[
 			select * from khy_board
+			where bdeleteyn = 'Y'
 			order by bno desc
 		]]>
 	</select>
@@ -25,6 +26,7 @@
 		select * 
 		from   khy_board
 		where  bno = #{bno}
+		and    bdeleteyn = 'Y'
 	</select>
 	
 	<update id="updateBoard">
@@ -34,6 +36,7 @@
 		      ,bfile      = #{bfile, jdbcType=VARCHAR}
 		      ,bupdatedate= sysdate
 		where  bno = #{bno}
+		and    bdeleteyn = 'Y'
 	</update>
 	
 	<update id="deleteBoard">
@@ -41,6 +44,7 @@
 		set    bdeleteyn   = 'N'
 		      ,bupdatedate = sysdate
 		where  bno = #{bno}
+		and    bdeleteyn = 'Y'
 	</update>
 	
 </mapper>

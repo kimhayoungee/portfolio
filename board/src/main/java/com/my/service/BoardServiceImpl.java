@@ -20,9 +20,9 @@ public class BoardServiceImpl implements BoardService {
 	private BoardMapper mapper;
 	
 	@Override
-	public List<BoardVO> getBoardList() {
+	public List<BoardVO> getList() {
 		// TODO Auto-generated method stub
-		log.info("getBoardList!!");
+		log.info("서비스 getList");
 		
 		return mapper.selectWholeList();
 	}
@@ -30,17 +30,17 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void register(BoardVO bvo) {
 		// TODO Auto-generated method stub
-		log.info("register!!" + bvo);
+		log.info("서비스 register " + bvo);
 		
 		bvo.setBno(mapper.getNumber()); //채번
 		mapper.insertBoard(bvo);
 		
-		log.info("서비스 끝");
 	}
 
 	@Override
 	public BoardVO showDetail(String bno) {
 		// TODO Auto-generated method stub
+		log.info("서비스 showDetail " + bno);
 		
 		return mapper.selectDetail(bno);
 	}
@@ -48,13 +48,15 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int editBoard(BoardVO bvo) {
 		// TODO Auto-generated method stub
-
+		log.info("서비스  editBoard " +bvo);
+		
 		return mapper.updateBoard(bvo);
 	}
 
 	@Override
 	public int removeBoard(String bno) {
 		// TODO Auto-generated method stub
+		log.info("서비스 removeBoard " + bno);
 		
 		return mapper.deleteBoard(bno);
 	}

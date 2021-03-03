@@ -1,0 +1,37 @@
+package com.my.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.my.service.BoardService;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+@Controller
+@RequestMapping("/board/*")
+@Log4j
+public class BoardController {
+
+		@Autowired
+		private BoardService service;
+		
+		@GetMapping("/getBoardList")
+		public void getBoardList(Model model) {
+			
+			log.info("getBoardList");
+		}
+		
+		
+		@GetMapping("/showDetail")
+		public void showDetail() {
+			
+		}		
+	
+	
+	
+} // end of BoardController
