@@ -23,7 +23,7 @@ public class BoardController {
 		@Autowired
 		private BoardService service;
 		
-		@GetMapping("/getList")
+		@GetMapping("/list")
 		public String getList(Model model) {			
 			log.info("컨트롤러 getList");
 			
@@ -41,7 +41,7 @@ public class BoardController {
 			return "redirect:/board/getList";
 		}
 		
-		@GetMapping("/showDetail")
+		@GetMapping("/detail")
 		public void showDetail(@RequestParam("bno") String bno, Model model) {
 			log.info("컨트롤러 showDetail " + bno);
 			
