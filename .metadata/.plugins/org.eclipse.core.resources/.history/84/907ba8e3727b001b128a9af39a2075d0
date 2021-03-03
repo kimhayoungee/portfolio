@@ -1,0 +1,48 @@
+package com.my.service;
+
+import java.util.List;
+
+import com.my.domain.BoardVO;
+
+@Log4j
+@Service
+@AllArgConstructor
+public class BoardServiceImpl implements BoardService {
+
+	@Override
+	public List<BoardVO> getBoardList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getNumber() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int register(BoardVO bvo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public BoardVO showDetail(String bno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int updateBoard(BoardVO bvo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteBoard(String bno) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

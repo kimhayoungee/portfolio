@@ -20,8 +20,8 @@ public class BoardMapperTest {
 	private BoardMapper mapper;
 	
 //	@Test
-	public void testGetBoardList() {
-		mapper.getBoardList().forEach(board -> log.info(board));
+	public void testSelectWholeList() {
+		mapper.selectWholeList().forEach(board -> log.info(board));
 	}
 
 //	@Test
@@ -38,14 +38,14 @@ public class BoardMapperTest {
 		bvo.setBtitle("테스트 제목입니다");
 		bvo.setBcontent("테스트 내용입니다");
 		
-		mapper.register(bvo);
+		mapper.insertBoard(bvo);
 		log.info(bvo);
 	}
 
 //	@Test
-	public void testShowDetail() {
+	public void testSelectDetail() {
 		
-		BoardVO bvo = mapper.showDetail("1");
+		BoardVO bvo = mapper.selectDetail("1");
 		
 		log.info(bvo);
 	}
@@ -62,7 +62,7 @@ public class BoardMapperTest {
 		log.info("UPDATE RESULT : " + result);
 	}
 
-	@Test
+//	@Test
 	public void testDeleteBoard() {
 		
 		int result = mapper.deleteBoard("3");

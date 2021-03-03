@@ -9,13 +9,13 @@ import com.my.domain.BoardVO;
 
 public interface BoardMapper {
 
-	public List<BoardVO> getBoardList();
+	public List<BoardVO> selectWholeList();
 	
-	public String getNumber();
+	public String getNumber(); //채번 
 	
-	public int register(BoardVO bvo);
+	public int insertBoard(BoardVO bvo);
 	
-	public BoardVO showDetail(String bno);
+	public BoardVO selectDetail(String bno);
 	
 	public int updateBoard(BoardVO bvo);
 	
