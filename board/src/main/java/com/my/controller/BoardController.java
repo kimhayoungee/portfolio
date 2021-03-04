@@ -31,6 +31,12 @@ public class BoardController {
 			return "board/list";
 		}
 		
+		//페이지 이동
+		@GetMapping("/register")
+		public void goRegister() {
+			
+		}
+		
 		@PostMapping("/register")
 		public String register(BoardVO bvo, RedirectAttributes ra) {
 			log.info("컨트롤러 register " + bvo);
@@ -38,17 +44,24 @@ public class BoardController {
 			service.register(bvo);
 			ra.addFlashAttribute("result", bvo.getBno());
 			
-			return "redirect:/board/getList";
+			return "redirect:/board/list";
 		}
 		
-		@GetMapping("/detail")
-		public void showDetail(@RequestParam("bno") String bno, Model model) {
-			log.info("컨트롤러 showDetail " + bno);
+		@GetMapping({"/detail", "/edit"})
+		public void goDetail(@RequestParam("bno") String bno, Model model) {
+			log.info("컨트롤러 showDetail 혹은 edit" + bno);
 			
 			model.addAttribute("bvo", service.showDetail(bno));
 		}		
 	
-		@PostMapping("/editBoard")
+		/*"/detail"과 합치기 
+		@GetMapping("/edit")
+		public void goEdit(@RequestParam("bno") String bno, Model model) {
+			
+			model.addAttribute("bvo", service.showDetail(bno));
+		}*/
+		
+		@PostMapping("/edit")
 		public String editBoard(BoardVO bvo, RedirectAttributes ra) {
 			log.info("컨트롤러 editBoard " + bvo);
 			
@@ -56,10 +69,10 @@ public class BoardController {
 				ra.addFlashAttribute("result", "성공");
 			}
 			
-			return "redirect:/board/getList";
+			return "redirect:/board/list";
 		}
 	
-		@PostMapping("/removeBoard")
+		@PostMapping("/remove")
 		public String removeBoard(@RequestParam("bno") String bno, RedirectAttributes ra) {
 			log.info("컨트롤러 removeBoard " + bno);
 			
@@ -67,12 +80,8 @@ public class BoardController {
 				ra.addFlashAttribute("result", "성공");
 			}
 			
-			return "redirect:/board/getList";
+			return "redirect:/board/list";
 		}
 		
-		//페이지 이동
-		@GetMapping("/register")
-		public void goRegister() {
-			
-		}
+
 } // end of BoardController

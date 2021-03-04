@@ -1,7 +1,0 @@
-package com.my.board;
-
-@Controller
-@RequestMapping("/board/*")
-public class BoardController {
-
-}

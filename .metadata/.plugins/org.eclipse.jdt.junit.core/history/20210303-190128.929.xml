@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="BoardServiceTest" project="board" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.my.service.BoardServiceTest" time="0.147">
-    <testcase name="testEditBoard" classname="com.my.service.BoardServiceTest" time="0.147"/>
-  </testsuite>
-</testrun>

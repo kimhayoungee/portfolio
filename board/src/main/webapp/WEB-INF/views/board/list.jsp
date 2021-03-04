@@ -8,6 +8,33 @@
 <head>
 	<%@include file="../includes/header.jsp" %>
 	<title>게시글 목록</title>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var result = '<c:out value="${result}" />';
+			
+			checkModal(result);
+			
+			history.replaceState({},null,null);
+			
+			function checkModal(result){
+				if(result === '' || history.state){
+					return;
+				}
+				
+				if(parseInt(result) >0){
+					$(".modal-body").html("처리가 완료되었습니다.");
+				}
+				
+				$("#myModal").modal("show");
+			}
+			
+			
+			$("#regBtn").on("click", function(){
+				self.location = "/board/register";
+			});
+		});
+	</script>
 </head>
 
 <body id="page-top">
@@ -183,20 +210,25 @@
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-		         			<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="card-header py-3" align="right">
+		         			<form class="d-none d-sm-inline-block form-inline navbar-search">
 		                        <div class="input-group">
+		                        	<!-- 검색부분 -->
 		                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
 		                                aria-label="Search" aria-describedby="basic-addon2">
 		                            <div class="input-group-append">
 		                                <button class="btn btn-primary" type="button">
 		                                    <i class="fas fa-search fa-sm"></i>
 		                                </button>
+		                                &nbsp;	                    
+                        				<button id='regBtn' type="button" class="btn btn-outline-primary" >새 글 등록</button>
 		                            </div>
-		                            <!-- 검색~~~ -->
+
 		                        </div>
 		                    </form>
                         </div>
+                        
+
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="" width="100%" cellspacing="0">
@@ -220,6 +252,24 @@
                 						</tr>
                 					</c:forEach>
                                 </table>
+                                
+                                <!-- Modal창 -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                	<div class="modal-dialog">
+                                		<div class="modal-content">
+                                			<div class="modal-header">
+                                				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                			</div>
+                                			<div class="modal-body" align="center">처리가 완료되었습니다.</div>
+                                			<div class="modal-footer">
+                                 				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+<!--                                				<button type="button" class="btn btn-primary">Save changes</button> -->
+                                			</div>
+                                		</div>
+                                	</div>
+                                </div> 
+                                <!-- Modal창 끝 -->
+                                
                             </div>
                         </div>
                     </div>
