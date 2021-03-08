@@ -37,9 +37,18 @@ public class BoardControllerTest {
 	public void testGetList() throws Exception{
 		
 		log.info(
-			mm.perform(MockMvcRequestBuilders.get("/board/getList"))
+			mm.perform(MockMvcRequestBuilders.get("/board/list"))
 		   .andReturn().getModelAndView().getModelMap()
 		);
+	}
+	
+	@Test
+	public void testGetListPaging() throws Exception{
+		
+		log.info(mm.perform(MockMvcRequestBuilders.get("/board/list")
+				   .param("amount",  "10")
+				   .param("pageNum", "5")
+				).andReturn().getModelAndView().getModelMap());
 	}
 
 //	@Test
@@ -66,7 +75,7 @@ public class BoardControllerTest {
 //	@Test
 	public void testEditBoard() throws Exception{
 		
-		String result = mm.perform(MockMvcRequestBuilders.post("/board/editBoard")
+		String result = mm.perform(MockMvcRequestBuilders.post("/board/edit")
 						  .param("bno", "1")
 						  .param("btitle", "수정된 제목입니다")
 						  .param("bcontent", "수정된 내용입니다")
@@ -77,7 +86,7 @@ public class BoardControllerTest {
 //	@Test
 	public void testRemoveBoard() throws Exception{
 		
-		String result = mm.perform(MockMvcRequestBuilders.post("/board/removeBoard")
+		String result = mm.perform(MockMvcRequestBuilders.post("/board/remove")
 						  .param("bno", "2")
 				        ).andReturn().getModelAndView().getViewName();
 		log.info(result);

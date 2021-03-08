@@ -6,10 +6,13 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.context.annotation.Configuration;
 
 import com.my.domain.BoardVO;
+import com.my.domain.PageVO;
 
 public interface BoardMapper {
 
-	public List<BoardVO> selectWholeList();
+	public List<BoardVO> selectList();
+	
+	public List<BoardVO> selectListPaging(PageVO pvo);
 	
 	public String getNumber(); //채번 
 	

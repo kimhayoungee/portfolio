@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.my.domain.BoardVO;
+import com.my.domain.PageVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -31,11 +32,17 @@ public class BoardServiceTest {
 		
 	}
 	
-//	@Test
-	public void testGetBoardList() {
+/*	@Test
+	public void testGetList() {
 		service.getList().forEach(board -> log.info(board));
 	}
-
+*/
+	
+	@Test
+	public void testGetListPaging() {
+		service.getList(new PageVO(3,10)).forEach(board -> log.info(board));
+	}
+	
 //	@Test
 	public void testShowDetail() {
 		log.info(service.showDetail("1"));
@@ -52,7 +59,7 @@ public class BoardServiceTest {
 		log.info("수정 : " + service.editBoard(bvo));
 	}
 	
-	@Test
+//	@Test
 	public void testRemoveBoard() {
 		
 		log.info("삭제 : " + service.removeBoard("1"));

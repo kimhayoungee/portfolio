@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.my.domain.BoardVO;
+import com.my.domain.PageVO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -20,10 +21,21 @@ public class BoardMapperTest {
 	private BoardMapper mapper;
 	
 //	@Test
-	public void testSelectWholeList() {
-		mapper.selectWholeList().forEach(board -> log.info(board));
+	public void testSelectList() {
+		mapper.selectList().forEach(board -> log.info(board));
 	}
 
+//	@Test
+	public void testselectListPaging() {
+		
+		PageVO pvo = new PageVO();
+		pvo.setAmount(10);
+		pvo.setPageNum(5);
+		
+		mapper.selectListPaging(pvo).forEach(board -> log.info(board.getBno()));
+		
+	}
+	
 //	@Test
 	public void testGetNumber() {
 		log.info(mapper.getNumber());

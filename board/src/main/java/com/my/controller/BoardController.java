@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.my.domain.BoardVO;
+import com.my.domain.PageVO;
 import com.my.service.BoardService;
 
 import lombok.AllArgsConstructor;
@@ -23,11 +24,19 @@ public class BoardController {
 		@Autowired
 		private BoardService service;
 		
-		@GetMapping("/list")
+/*		@GetMapping("/list")
 		public String getList(Model model) {			
 			log.info("컨트롤러 getList");
 			
 			model.addAttribute("boardList", service.getList());
+			return "board/list";
+		}
+*/
+		@GetMapping("/list")
+		public String getList(PageVO pvo, Model model) {
+			log.info("컨트롤러 getList");
+			
+			model.addAttribute("boardList", service.getList(pvo));
 			return "board/list";
 		}
 		

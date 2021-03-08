@@ -3,10 +3,13 @@ package com.my.service;
 import java.util.List;
 
 import com.my.domain.BoardVO;
+import com.my.domain.PageVO;
 
 public interface BoardService {
 
-	public List<BoardVO> getList();
+//	public List<BoardVO> getList();
+
+	public List<BoardVO> getList(PageVO pvo);
 	
 	public void register(BoardVO bvo);
 	
