@@ -68,11 +68,5 @@ public class BoardServiceImpl implements BoardService {
 		
 		return mapper.deleteBoard(bno);
 	}
-	
-	public int getTotal(Criteria cri) {
-		log.info("서비스 getTotal(cri) " + cri);
-		
-		return mapper.getTotalCount(cri);
-	}
 
 }

@@ -58,9 +58,9 @@
 		and    bdeleteyn = 'Y'
 	</update>
 	
-	<select id="getTotalCount" resultType="int">
+	<select id="getTotalCount">
 		select count(*) 
 		from   khy_board 
-		where  bdeleteyn='Y'
+		where  bdeleteyn='Y';
 	</select>
 </mapper>

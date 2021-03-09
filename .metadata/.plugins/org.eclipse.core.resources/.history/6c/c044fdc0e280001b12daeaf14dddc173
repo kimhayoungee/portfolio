@@ -24,6 +24,4 @@ public interface BoardMapper {
 	
 	public int deleteBoard(String bno);
 	
-	public int getTotalCount(Criteria cri);
-	
 } //end of BoardMapper

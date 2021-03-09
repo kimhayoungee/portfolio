@@ -19,5 +19,4 @@ public interface BoardService {
 	
 	public int removeBoard(String bno);
 	
-	public int getTotal(Criteria cri);
 }
