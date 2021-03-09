@@ -33,6 +33,29 @@
 			$("#regBtn").on("click", function(){
 				self.location = "/board/register";
 			});
+			
+			var actionForm = $("#actionForm");
+			
+			$(".page-link a").on("click", function(e){
+				
+				//a태그 말고 form태그로 이동하도록
+				e.preventDefault();
+				
+				console.log('클릭');
+				
+				actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+				actionForm.submit();
+				
+			});
+			
+			$(".move").on("click", function(e){
+				
+				e.preventDefault();
+				actionForm.append("<input type='hidden' name='bno' value='" + $(this).attr("href") + "'>");
+				actionForm.attr("action", "/board/detail");
+				actionForm.submit();
+				
+			});
 		});
 	</script>
 </head>
@@ -245,7 +268,11 @@
                 					<c:forEach items="${boardList}" var="board">
                 						<tr>
                 							<td><c:out value="${board.bno}"></c:out></td>
-                							<td><c:out value="${board.btitle}"></c:out></td>
+                							<td>
+                								<a class='move' href='<c:out value="${board.bno}"></c:out>'>
+                								<c:out value="${board.btitle}"></c:out>
+                								</a> 
+                							</td>
                 							<td><c:out value="${board.bcontent}"></c:out></td>
                 							<td><c:out value="${board.bid}"></c:out></td>
                 							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.bregdate}"></fmt:formatDate></td>
@@ -254,20 +281,24 @@
                                 </table>
                                 
                                 <!-- 페이징 -->
-								<div class='pull-right'>
+								<div class="float-sm-right">
 									<ul class="pagination">
 										<c:if test="${pageMaker.prev}">
-											<li class="paginate_button previous"><a href="#">Previous</a></li>
+											<li class="page-link previous"><a href="${pageMaker.startPage -1}">Previous</a></li>
 										</c:if>
 										
 										<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-											<li class="paginate_button"><a href="#">${num}</a></li>
+											<li class="page-link ${pageMaker.cri.pageNum == num ? "active":""} "><a href="${num}">${num}</a></li>
 										</c:forEach>
 										
 										<c:if test="${pageMaker.next}">
-											<li class="paginate_button next"><a href="#">Next</a></li>
+											<li class="page-link next"><a href="${pageMaker.endPage +1}">Next</a></li>
 										</c:if>
 									</ul>
+									<form id='actionForm' action="/board/list" method="get">
+										<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+										<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+									</form>
 								</div>                                
 
                                 <!-- Modal창 -->
