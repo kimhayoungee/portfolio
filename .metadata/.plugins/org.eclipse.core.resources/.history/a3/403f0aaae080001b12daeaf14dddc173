@@ -6,73 +6,30 @@
 <html lang="en">
 
 <head>
-	<title>게시글 수정</title>
+	<title>게시글 보기</title>
 	<%@include file="../includes/header.jsp" %>
-	<!-- include summernote css/js -->
-	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     
     <script>
     $(document).ready(function(){
-    	var toolbar = [
-		    // 글꼴 설정
-		    ['fontname', ['fontname']],
-		    // 글자 크기 설정
-		    ['fontsize', ['fontsize']],
-		    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
-		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-		    // 글자색
-		    ['color', ['forecolor','color']],
-		    // 표만들기
-		    ['table', ['table']],
-		    // 글머리 기호, 번호매기기, 문단정렬
-		    ['para', ['ul', 'ol', 'paragraph']],
-		    // 줄간격
-		    ['height', ['height']],
-
-		];
-
-		var setting = {
-            height : 300,
-            minHeight : null,
-            maxHeight : null,
-            focus : true,
-            lang : 'ko-KR',
-            toolbar : toolbar
-        };
-
-        $('.summernote').summernote(setting);
        
       //버튼이벤트
-        var formObj = $("form");
+        var operForm = $("#operForm");
         
-        $('button').on("click", function(e){
-        	
-        	e.preventDefault();
-        	
-        	var operation = $(this).data("oper");
-        	
-        	console.log(operation);
-        	
-        	if(operation==='remove'){
-        		
-        		formObj.attr("action", "/board/remove");
-        	
-        	}else if(operation==='list'){
-        		
-        		formObj.attr("action", "/board/list").attr("method", "get");
-        		var pageNumTag = $("input[name='pageNum']").clone();
-        		var amountTag = $("input[name='amount']").clone();
-        		
-        		formObj.empty();
-        		formObj.append(pageNumTag);
-        		formObj.append(amountTag);
-        	}
-        	formObj.submit();
-        });
+		$("button[data-oper='edit']").on("click", function(e){
+			
+			operForm.attr("action", "/board/edit").submit();
+			
+		});
+		
+		$("button[data-oper='list']").on("click", function(e){
+			
+			operForm.find("#bno").remove();
+			operForm.attr("action","/board/list").submit();
+			
+		});
     });
     </script>
-
+    
 </head>
 
 <body id="page-top">
@@ -243,8 +200,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                  <!--   <h1 class="h3 mb-2 text-gray-800">게시글 쓰기</h1> -->
-                    <p class="mb-4">게시글 쓰기</p>
+                    <p class="mb-4">게시글 보기</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -252,26 +208,22 @@
 		       
                         </div>
                         <div class="card-body">
-                        <form action="/board/edit" method="post">
-                        	<div class="form-group">
-                        		<label>제목</label> <input class="form-control" name='btitle' value='<c:out value="${bvo.btitle}"/>' >
-                        	</div>
+                       
+                       	<div class="form-group">
+                       		<label>제목</label> <input class="form-control" value='<c:out value="${bvo.btitle}"/>' >
+                       	</div>
+                       	
+                       	<div class="form-group">
+                       		<label>내용</label> <textarea class="form-control"><c:out value="${bvo.bcontent}"/></textarea>
+                       	</div>
+                        
+                     	<div class="form-group">
+                       		<label>작성일</label> <input class="form-control" value='<fmt:formatDate pattern="yyyy-MM-dd" value="${bvo.bregdate}"/>' >
+                       	</div>                        
                         	
-                        	<div class="form-group">
-                        		<label>내용</label> <textarea class="summernote" name='bcontent'><c:out value="${bvo.bcontent}"/></textarea>
-                        	</div>
-                        	
-                            <div class="form-group">
-                       			<label>작성일</label> <input class="form-control" value='<fmt:formatDate pattern="yyyy-MM-dd" value="${bvo.bregdate}"/>' >
-                       		</div>  
-                       		                 	
+                         <form id='operForm' action="/board/edit" method="get">	
                         	<input type="hidden" name='bno' value='<c:out value="${bvo.bno}"/>'>
-                        	<input type="hidden" name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
-                        	<input type="hidden" name='amount' value='<c:out value="${cri.amount}"/>'>
-                        	
-                        	<div>첨부파일</div>
-                        	<button type="submit" data-oper='edit' class="btn btn-primary">수정</button>
-                        	<button type="submit" data-oper='remove' class="btn btn-primary">삭제</button>
+                        	<button type="submit" data-oper='edit' class="btn btn-primary">수정/삭제</button>
                         	<button type="submit" data-oper='list' class="btn btn-primary">목록으로</button>
                         </form>
                         </div>

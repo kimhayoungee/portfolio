@@ -74,29 +74,23 @@ public class BoardController {
 		}*/
 		
 		@PostMapping("/edit")
-		public String editBoard(BoardVO bvo, @ModelAttribute("cri") Criteria cri, RedirectAttributes ra) {
+		public String editBoard(BoardVO bvo, RedirectAttributes ra) {
 			log.info("컨트롤러 editBoard " + bvo);
 			
 			if(service.editBoard(bvo)==1) {
 				ra.addFlashAttribute("result", "성공");
 			}
 			
-			ra.addAttribute("pageNum", cri.getPageNum());
-			ra.addAttribute("amount", cri.getAmount());
-			
 			return "redirect:/board/list";
 		}
 	
 		@PostMapping("/remove")
-		public String removeBoard(@RequestParam("bno") String bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes ra) {
+		public String removeBoard(@RequestParam("bno") String bno, RedirectAttributes ra) {
 			log.info("컨트롤러 removeBoard " + bno);
 			
 			if(service.removeBoard(bno)==1) {
 				ra.addFlashAttribute("result", "성공");
 			}
-			
-			ra.addAttribute("pageNum", cri.getPageNum());
-			ra.addAttribute("amount", cri.getAmount());
 			
 			return "redirect:/board/list";
 		}

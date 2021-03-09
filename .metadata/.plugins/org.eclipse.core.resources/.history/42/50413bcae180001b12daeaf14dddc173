@@ -65,8 +65,7 @@
         		var amountTag = $("input[name='amount']").clone();
         		
         		formObj.empty();
-        		formObj.append(pageNumTag);
-        		formObj.append(amountTag);
+        		
         	}
         	formObj.submit();
         });

@@ -97,7 +97,6 @@ public class BoardController {
 			
 			ra.addAttribute("pageNum", cri.getPageNum());
 			ra.addAttribute("amount", cri.getAmount());
-			
 			return "redirect:/board/list";
 		}
 		

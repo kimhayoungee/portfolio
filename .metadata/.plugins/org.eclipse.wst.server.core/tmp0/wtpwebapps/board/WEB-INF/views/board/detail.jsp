@@ -223,6 +223,9 @@
                         	
                          <form id='operForm' action="/board/edit" method="get">	
                         	<input type="hidden" name='bno' value='<c:out value="${bvo.bno}"/>'>
+                        	<input type="hidden" name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+                        	<input type="hidden" name='amount' value='<c:out value="${cri.amount}"/>'>
+                        	
                         	<button type="submit" data-oper='edit' class="btn btn-primary">수정/삭제</button>
                         	<button type="submit" data-oper='list' class="btn btn-primary">목록으로</button>
                         </form>
