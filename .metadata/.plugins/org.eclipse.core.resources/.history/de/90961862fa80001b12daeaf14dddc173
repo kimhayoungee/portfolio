@@ -67,6 +67,13 @@ public class BoardController {
 			
 			model.addAttribute("bvo", service.showDetail(bno));
 		}		
+	
+		/*"/detail"과 합치기 
+		@GetMapping("/edit")
+		public void goEdit(@RequestParam("bno") String bno, Model model) {
+			
+			model.addAttribute("bvo", service.showDetail(bno));
+		}*/
 		
 		@PostMapping("/edit")
 		public String editBoard(BoardVO bvo, @ModelAttribute("cri") Criteria cri, RedirectAttributes ra) {
@@ -75,6 +82,12 @@ public class BoardController {
 			if(service.editBoard(bvo)==1) {
 				ra.addFlashAttribute("result", "성공");
 			}
+			
+			/*
+			 * ra.addAttribute("pageNum", cri.getPageNum()); ra.addAttribute("amount",
+			 * cri.getAmount()); ra.addAttribute("type", cri.getType());
+			 * ra.addAttribute("keyword", cri.getKeyword());
+			 */
 			
 			return "redirect:/board/list" + cri.getListLink();
 		}
@@ -86,6 +99,12 @@ public class BoardController {
 			if(service.removeBoard(bno)==1) {
 				ra.addFlashAttribute("result", "성공");
 			}
+			
+			/*
+			 * ra.addAttribute("pageNum", cri.getPageNum()); ra.addAttribute("amount",
+			 * cri.getAmount()); ra.addAttribute("type", cri.getType());
+			 * ra.addAttribute("keyword", cri.getKeyword());
+			 */
 			
 			return "redirect:/board/list" + cri.getListLink();
 		}
