@@ -225,6 +225,8 @@
                         	<input type="hidden" name='bno' value='<c:out value="${bvo.bno}"/>'>
                         	<input type="hidden" name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
                         	<input type="hidden" name='amount' value='<c:out value="${cri.amount}"/>'>
+                        	<input type="hidden" name='type' value='<c:out value="${cri.type}"/>'>
+                        	<input type="hidden" name='keyword' value='<c:out value="${cri.keyword}"/>'>
                         	
                         	<button type="submit" data-oper='edit' class="btn btn-primary">수정/삭제</button>
                         	<button type="submit" data-oper='list' class="btn btn-primary">목록으로</button>

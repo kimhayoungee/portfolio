@@ -56,6 +56,27 @@
 				actionForm.submit();
 				
 			});
+			
+			//검색
+			var searchForm = $("#searchForm");
+			$("#searchBtn").on("click", function(e){
+				
+				if(!searchForm.find("option:selected").val()){
+					alert("검색 종류를 선택하세요");
+					return false;
+				}
+				
+				if(!searchForm.find("input[name='keyword']").val()){
+					alert("키워드를 입력하세요");
+					return false;
+				}
+				
+				searchForm.find("input[name='pageNum']").val("1");
+				e.preventDefault();
+				
+				searchForm.submit();
+			});
+			
 		});
 	</script>
 </head>
@@ -233,17 +254,29 @@
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
+                    
+                    	<!-- 검색 -->
                         <div class="card-header py-3" align="right">
-		         			<form class="d-none d-sm-inline-block form-inline navbar-search">
+		         			<form id='searchForm' action='/board/list' method='get'>
 		                        <div class="input-group">
-		                        	<!-- 검색부분 -->
-		                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-		                                aria-label="Search" aria-describedby="basic-addon2">
+		                        	<select name='type'>
+		                        		<option value="" <c:out value="${pageMaker.cri.type == null? 'selected':''}"></c:out>>--</option>
+		                        		<option value="T" <c:out value="${pageMaker.cri.type eq 'T'? 'selected':''}"></c:out>>제목</option>
+		                        		<option value="C" <c:out value="${pageMaker.cri.type eq 'C'? 'selected':''}"></c:out>>내용</option>
+		                        		<option value="I" <c:out value="${pageMaker.cri.type eq 'I'? 'selected':''}"></c:out>>작성자</option>
+		                        		<option value="TC" <c:out value="${pageMaker.cri.type eq 'TC'? 'selected':''}"></c:out>>제목 or 내용</option>
+		                        		<option value="TI" <c:out value="${pageMaker.cri.type eq 'TI'? 'selected':''}"></c:out>>제목 or 작성자</option>
+		                        		<option value="TCI" <c:out value="${pageMaker.cri.type eq 'TCI'? 'selected':''}"></c:out>>제목 or 내용 or 작성자</option>
+		                        	</select>
+		                            <input type="text" name="keyword" placeholder="Search for..." value='<c:out value="${pageMaker.cri.keyword}"/>'>
+		                            <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+		                            <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+		                            
 		                            <div class="input-group-append">
-		                                <button class="btn btn-primary" type="button">
+		                                <button id='searchBtn' class="btn btn-primary" type="button">
 		                                    <i class="fas fa-search fa-sm"></i>
 		                                </button>
-		                                &nbsp;	                    
+		                                &nbsp;               
                         				<button id='regBtn' type="button" class="btn btn-outline-primary" >새 글 등록</button>
 		                            </div>
 
@@ -284,20 +317,22 @@
 								<div class="float-sm-right">
 									<ul class="pagination">
 										<c:if test="${pageMaker.prev}">
-											<li class="page-link previous"><a href="${pageMaker.startPage -1}">Previous</a></li>
+											<li class="page-link"><a href="${pageMaker.startPage -1}">Previous</a></li>
 										</c:if>
 										
 										<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-											<li class="page-link ${pageMaker.cri.pageNum == num ? "active":""} "><a href="${num}">${num}</a></li>
+											<li class="${pageMaker.cri.pageNum == num ? "btn":"page-link"} "><a href="${num}">${num}</a></li>
 										</c:forEach>
 										
 										<c:if test="${pageMaker.next}">
-											<li class="page-link next"><a href="${pageMaker.endPage +1}">Next</a></li>
+											<li class="page-link"><a href="${pageMaker.endPage +1}">Next</a></li>
 										</c:if>
 									</ul>
 									<form id='actionForm' action="/board/list" method="get">
 										<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 										<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+										<input type='hidden' name='type' value='${pageMaker.cri.type}'>
+										<input type='hidden' name='keyword' value='${pageMaker.cri.keyword}'>
 									</form>
 								</div>                                
 
