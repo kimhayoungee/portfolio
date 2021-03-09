@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.my.domain.BoardVO;
-import com.my.domain.PageVO;
+import com.my.domain.Criteria;
 import com.my.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -29,10 +29,10 @@ public class BoardServiceImpl implements BoardService {
 	}
 */
 	@Override
-	public List<BoardVO> getList(PageVO pvo){
-		log.info("서비스 getList(pvo) " + pvo);
+	public List<BoardVO> getList(Criteria cri){
+		log.info("서비스 getList(pvo) " + cri);
 		
-		return mapper.selectListPaging(pvo);
+		return mapper.selectListPaging(cri);
 	}
 
 	@Override

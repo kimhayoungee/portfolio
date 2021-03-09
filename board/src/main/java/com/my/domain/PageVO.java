@@ -1,25 +1,33 @@
 package com.my.domain;
 
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-@Setter
 @ToString
 public class PageVO {
 
-	private int pageNum;
-	private int amount;
+	private int startPage;
+	private int endPage;
+	private boolean prev, next;
 	
-	public PageVO(int pageNum, int amount) {
+	private int total;
+	private Criteria cri;
+	
+	public PageVO(int total, Criteria cri) {
 		super();
-		this.pageNum = pageNum;
-		this.amount = amount;
-	}
-
-	public PageVO() {
-		this(1,10);
+		this.total = total;
+		this.cri = cri;
+		
+		this.endPage = ((cri.getPageNum()/10) +1) *10;
+		this.startPage = this.endPage -9;
+		
+		int realEndPage = (total / cri.getAmount()) +1;
+		
+		if(realEndPage <this.endPage) this.endPage = realEndPage;
+		
+		this.prev = this.startPage > 1;
+		this.next = this.endPage < realEndPage;
 	}
 	
 }

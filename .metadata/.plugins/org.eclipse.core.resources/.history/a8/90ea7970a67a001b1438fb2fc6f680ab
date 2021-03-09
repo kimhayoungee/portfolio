@@ -1,5 +1,0 @@
-package com.my.persistence;
-
-public class JDBCTest {
-
-}

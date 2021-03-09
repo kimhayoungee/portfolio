@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.my.domain.BoardVO;
-import com.my.domain.PageVO;
+import com.my.domain.Criteria;
 
 import lombok.extern.log4j.Log4j;
 
@@ -40,7 +40,7 @@ public class BoardServiceTest {
 	
 	@Test
 	public void testGetListPaging() {
-		service.getList(new PageVO(3,10)).forEach(board -> log.info(board));
+		service.getList(new Criteria(3,10)).forEach(board -> log.info(board));
 	}
 	
 //	@Test

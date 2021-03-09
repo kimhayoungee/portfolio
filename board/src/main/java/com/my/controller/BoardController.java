@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.my.domain.BoardVO;
+import com.my.domain.Criteria;
 import com.my.domain.PageVO;
 import com.my.service.BoardService;
 
@@ -33,10 +34,11 @@ public class BoardController {
 		}
 */
 		@GetMapping("/list")
-		public String getList(PageVO pvo, Model model) {
+		public String getList(Criteria cri, Model model) {
 			log.info("컨트롤러 getList");
 			
-			model.addAttribute("boardList", service.getList(pvo));
+			model.addAttribute("boardList", service.getList(cri));
+			model.addAttribute("pageMaker", new PageVO(123,cri));
 			return "board/list";
 		}
 		

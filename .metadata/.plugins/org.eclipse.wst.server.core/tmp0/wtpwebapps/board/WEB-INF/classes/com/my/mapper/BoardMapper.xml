@@ -3,11 +3,23 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.my.mapper.BoardMapper">
 
-	<select id="selectWholeList" resultType="com.my.domain.BoardVO">
+	<select id="selectList" resultType="com.my.domain.BoardVO">
+		select * from khy_board
+		where bdeleteyn = 'Y'
+		order by bno desc
+	</select>
+
+	<select id="selectListPaging" resultType="com.my.domain.BoardVO">
 		<![CDATA[
-			select * from khy_board
-			where bdeleteyn = 'Y'
-			order by bno desc
+			select a.*
+			from  (select b.*
+			             ,rownum r
+			       from  (select * 
+			              from   khy_board 
+			              where  bdeleteyn ='Y'
+			              order  by bno *1 desc) b
+			       where  rownum <= #{pageNum} * #{amount}) a
+			where  r > (#{pageNum}-1) * #{amount} 
 		]]>
 	</select>
 

@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.my.domain.BoardVO;
-import com.my.domain.PageVO;
+import com.my.domain.Criteria;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -28,7 +28,7 @@ public class BoardMapperTest {
 //	@Test
 	public void testselectListPaging() {
 		
-		PageVO pvo = new PageVO();
+		Criteria pvo = new Criteria();
 		pvo.setAmount(10);
 		pvo.setPageNum(5);
 		
