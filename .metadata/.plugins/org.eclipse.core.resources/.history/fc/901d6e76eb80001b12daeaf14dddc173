@@ -3,26 +3,6 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.my.mapper.BoardMapper">
 
-	<sql id="criteria">
-			<trim prefix="(" suffix=") AND " prefixOverrides="OR">
-				<foreach item='type' collection="typeArr">
-					<trim prefix="OR">
-						<choose>
-							<when test="type == 'T'.toString()">
-								btitle like '%'||#{keyword}||'%'
-							</when>
-							<when test="type == 'C'.toString()">
-								bcontent like '%'||#{keyword}||'%'
-							</when>
-							<when test="type == 'I'.toString()">
-								bid like '%'||#{keyword}||'%'
-							</when>
-						</choose>
-					</trim>
-				</foreach>			
-			</trim>		
-	</sql>
-	
 	<select id="selectList" resultType="com.my.domain.BoardVO">
 		select * from khy_board
 		where bdeleteyn = 'Y'
@@ -39,7 +19,23 @@
 			              where 
 		]]>	              
 		
-		<include refid="criteria"></include>
+			<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+				<foreach item='type' collection="typeArr">
+					<trim prefix="OR">
+						<choose>
+							<when test="type == 'T'.toString()">
+								btitle like '%'||#{keyword}||'%'
+							</when>
+							<when test="type == 'C'.toString()">
+								bcontent like '%'||#{keyword}||'%'
+							</when>
+							<when test="type == 'I'.toString()">
+								bid like '%'||#{keyword}||'%'
+							</when>
+						</choose>
+					</trim>
+				</foreach>			
+			</trim>
 			
 		<![CDATA[	              
 						  bdeleteyn ='Y'
@@ -87,10 +83,6 @@
 	<select id="getTotalCount" resultType="int">
 		select count(*) 
 		from   khy_board 
-		where  
-		
-		<include refid="criteria"></include>
-		
-			   bdeleteyn='Y'
+		where  bdeleteyn='Y'
 	</select>
 </mapper>
