@@ -25,10 +25,4 @@ public class Criteria {
 		this(1,10);
 	}
 	
-	public String[] getTypeArr() {
-		
-		return type == null? new String[] {}: type.split("");
-	}
-	
-	
 }

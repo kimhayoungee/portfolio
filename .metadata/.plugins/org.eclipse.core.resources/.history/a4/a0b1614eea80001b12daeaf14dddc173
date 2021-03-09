@@ -1,7 +1,5 @@
 package com.my.mapper;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,14 +82,4 @@ public class BoardMapperTest {
 		log.info("DELETE RESULT : " + result);
 	}
 
-	@Test
-	public void testSearch() {
-		Criteria cri = new Criteria();
-		cri.setKeyword("테스트");
-		cri.setType("TC");
-		
-		List<BoardVO> list = mapper.selectListPaging(cri);
-		
-		list.forEach(board -> log.info(board));
-	}
 } //end of BoardMapperTest

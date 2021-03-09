@@ -29,7 +29,7 @@
 							<when test="type == 'C'.toString()">
 								bcontent like '%'||#{keyword}||'%'
 							</when>
-							<when test="type == 'I'.toString()">
+							<when test="type == 'W'.toString()">
 								bid like '%'||#{keyword}||'%'
 							</when>
 						</choose>
