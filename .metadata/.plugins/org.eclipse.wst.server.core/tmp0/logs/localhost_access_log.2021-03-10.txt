@@ -113,3 +113,12 @@
 127.0.0.1 - - [10/Mar/2021:02:04:25 +0900] "GET / HTTP/1.1" 404 721
 0:0:0:0:0:0:0:1 - - [10/Mar/2021:02:04:25 +0900] "GET / HTTP/1.1" 404 721
 0:0:0:0:0:0:0:1 - - [10/Mar/2021:02:04:28 +0900] "GET /board/list HTTP/1.1" 500 7932
+127.0.0.1 - - [10/Mar/2021:02:09:57 +0900] "GET / HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:02:09:58 +0900] "GET / HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:02:10:09 +0900] "GET /board/list HTTP/1.1" 200 23539
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:02:10:14 +0900] "GET /board/list?pageNum=3&amount=10&type=&keyword= HTTP/1.1" 200 23472
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:02:10:20 +0900] "GET /board/list?type=T&keyword=%EC%A0%9C%EB%AA%A9&pageNum=1&amount=10 HTTP/1.1" 200 23598
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:02:10:22 +0900] "GET /board/list?pageNum=3&amount=10&type=T&keyword=%EC%A0%9C%EB%AA%A9 HTTP/1.1" 200 23546
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:02:10:25 +0900] "GET /board/list?pageNum=5&amount=10&type=T&keyword=%EC%A0%9C%EB%AA%A9 HTTP/1.1" 200 23585
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:02:10:29 +0900] "GET /board/detail?pageNum=5&amount=10&type=T&keyword=%EC%A0%9C%EB%AA%A9&bno=655294 HTTP/1.1" 200 14181
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:02:10:31 +0900] "GET /board/list?bno=655294&pageNum=5&amount=10&type=T&keyword=%EC%A0%9C%EB%AA%A9 HTTP/1.1" 200 23585
